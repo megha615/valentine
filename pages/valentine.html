@@ -1,76 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine Question</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background: #fff0f5;
-    }
-    button {
-      padding: 12px 25px;
-      margin: 20px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 25px;
-      border: none;
-    }
-    #yes-btn {
-      background-color: #ff4d6d;
-      color: white;
-    }
-    #no-btn {
-      background-color: #adb5bd;
-      color: white;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    #gif-container {
-      display: none;
-      margin-top: 30px;
-    }
-    h2 {
-  font-family: 'Pacifico', cursive;
-  font-size: 36px;
-  color: #ff4d6d;
-  margin-bottom: 30px;
-}
-  </style>
+<meta charset="UTF-8">
+<title>Will you be my Valentine?</title>
+
+<!-- Google Font: Cute handwriting -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+  /* Full page */
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fff0f5; /* soft pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Center card */
+  .card {
+    background-color: white;
+    padding: 60px 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 500px;
+  }
+
+  /* Cute Valentine text */
+  h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    color: #ff4d6d;
+    margin-bottom: 30px;
+  }
+
+  /* Optional paragraph */
+  p {
+    font-size: 18px;
+    margin: 0 0 30px 0;
+  }
+
+  /* Heart button */
+  #heart {
+    font-size: 100px;
+    color: red;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  #heart:hover {
+    transform: scale(1.3);
+  }
+</style>
 </head>
 <body>
-  <h2>Hey Darshan 💖<br>Will you be my Valentine?</h2>
-  <button id="yes-btn">Yes 💘</button>
-  <button id="no-btn">No 😅</button>
-
-  <div id="gif-container">
-    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnBmYnNqcWU5ejUycTR2a251NWxicThoOXp6MnJjdXg0dHJ6dW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/igB2Th9e4nW6s/giphy.gif" 
-         alt="Shocked Barbie" width="320">
+  <div class="card">
+    <h2>Hey Darshan 💖<br>Will you be my Valentine?</h2>
+    <p>Click the heart to see the surprise 💌</p>
+    <!-- Heart button -->
+    <a href="pages/valentine.html" id="heart">❤️</a>
   </div>
-
-  <script>
-    const noBtn = document.getElementById('no-btn');
-    const yesBtn = document.getElementById('yes-btn');
-    const gifContainer = document.getElementById('gif-container');
-
-    // Move the No button when hovered
-    noBtn.addEventListener('mouseenter', () => {
-      const x = Math.floor(Math.random() * 80);
-      const y = Math.floor(Math.random() * 80);
-      noBtn.style.left = x + '%';
-      noBtn.style.top = y + '%';
-      noBtn.style.position = 'absolute';
-    });
-
-    // When Yes clicked → hide buttons, show gif
-    yesBtn.addEventListener('click', () => {
-      yesBtn.style.display = 'none';
-      noBtn.style.display = 'none';
-      gifContainer.style.display = 'block';
-    });
-  </script>
 </body>
 </html>
+
