@@ -7,13 +7,26 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      margin-top: 100px;
-      background-color: #fff0f5;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       /* Sticker background */
-      background-image: url('gitstick.png'); /* use your uploaded sticker */
-      background-repeat: repeat; /* repeat all over the page */
-      background-size: 80px 80px; /* adjust size of each sticker */
+      background-image: url('gitstick.png'); /* your uploaded sticker */
+      background-repeat: repeat;
+      background-size: 80px 80px;
+    }
+
+    /* Center card */
+    .card {
+      background-color: white; /* clean box */
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      z-index: 2;
     }
 
     #heart {
@@ -22,8 +35,7 @@
       cursor: pointer;
       transition: transform 0.3s ease;
       display: inline-block;
-      position: relative; /* keep it on top of background */
-      z-index: 2;
+      margin-top: 20px;
     }
 
     #heart:hover {
@@ -34,15 +46,9 @@
       text-decoration: none;
       color: inherit;
     }
-
-    h2, p {
-      position: relative;
-      z-index: 2; /* ensures text is above background */
-    }
   </style>
 </head>
 <body>
-  <h2>Hey cutie, you have a question 😘</h2>
-  <p>Click on the <a href="valentine.html" id="heart">❤️</a> to see the question</p>
-</body>
-</html>
+  <div class="card">
+    <h2>Hey cutie, you have a question 😘</h2>
+    <p>Click on this <a href="valentine.html" id=
