@@ -4,58 +4,23 @@
   <meta charset="UTF-8">
   <title>Valentine Intro</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
+    html, body {
+      height: 100%; /* make sure the body fills the screen */
       margin: 0;
       padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      /* Sticker background outside the card */
+      font-family: Arial, sans-serif;
       background-image: url('gitstick.png'); /* your sticker */
       background-repeat: repeat;
       background-size: 80px 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Card in the center */
+    /* Center card */
     .card {
-      background-color: white; /* clean box */
+      background-color: white;
       padding: 50px 40px;
       border-radius: 20px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-      z-index: 2;
-      display: inline-block;
-    }
-
-    /* Heart inside the card */
-    #heart {
-      font-size: 100px; /* big heart */
-      color: red;
-      cursor: pointer;
-      display: block; /* puts it on its own line */
-      margin: 20px auto 0 auto; /* centered */
-      transition: transform 0.3s ease;
-      text-decoration: none; /* remove underline if any */
-    }
-
-    #heart:hover {
-      transform: scale(1.3);
-    }
-
-    h2, p {
-      margin: 0 0 10px 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h2>Hey cutie, you have a question 😘</h2>
-    <p>Click the heart to see the question</p>
-    <!-- BIG clickable heart -->
-    <a href="valentine.html" id="heart">❤️</a>
-  </div>
-</body>
-</html>
+      text-al
