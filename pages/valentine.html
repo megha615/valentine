@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background: #fff0f5;
+    }
+    button {
+      padding: 12px 25px;
+      margin: 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 25px;
+      border: none;
+    }
+    #yes-btn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+    #no-btn {
+      background-color: #adb5bd;
+      color: white;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    #gif-container {
+      display: none;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hey Darshan 💖<br>Will you be my Valentine?</h2>
+  <button id="yes-btn">Yes 💘</button>
+  <button id="no-btn">No 😅</button>
+
+  <div id="gif-container">
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnBmYnNqcWU5ejUycTR2a251NWxicThoOXp6MnJjdXg0dHJ6dW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/igB2Th9e4nW6s/giphy.gif" 
+         alt="Shocked Barbie" width="320">
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('no-btn');
+    const yesBtn = document.getElementById('yes-btn');
+    const gifContainer = document.getElementById('gif-container');
+
+    // Move the No button when hovered
+    noBtn.addEventListener('mouseenter', () => {
+      const x = Math.floor(Math.random() * 80);
+      const y = Math.floor(Math.random() * 80);
+      noBtn.style.left = x + '%';
+      noBtn.style.top = y + '%';
+      noBtn.style.position = 'absolute';
+    });
+
+    // When Yes clicked → hide buttons, show gif
+    yesBtn.addEventListener('click', () => {
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+      gifContainer.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
