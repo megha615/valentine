@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Intro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #fff0f5;
+
+      /* Sticker background */
+      background-image: url('gitstick.png'); /* use your uploaded sticker */
+      background-repeat: repeat; /* repeat all over the page */
+      background-size: 80px 80px; /* adjust size of each sticker */
+    }
+
+    #heart {
+      font-size: 70px;
+      color: red;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      position: relative; /* keep it on top of background */
+      z-index: 2;
+    }
+
+    #heart:hover {
+      transform: scale(1.3);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h2, p {
+      position: relative;
+      z-index: 2; /* ensures text is above background */
+    }
+  </style>
+</head>
+<body>
+  <h2>Hey cutie, you have a question 😘</h2>
+  <p>Click on the <a href="valentine.html" id="heart">❤️</a> to see the question</p>
+</body>
+</html>
