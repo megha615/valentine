@@ -23,6 +23,7 @@ body {
   text-align: center;
   box-shadow: 0 15px 40px rgba(255, 105, 135, 0.2);
   position: relative;
+  width: 400px;
 }
 
 h2 {
@@ -37,12 +38,15 @@ button {
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  position: relative;
 }
 
 #yes-btn {
   background-color: #ff4d6d;
   color: white;
+}
+
+#yes-btn:hover {
+  background-color: #e0315b;
 }
 
 #no-btn {
@@ -51,9 +55,17 @@ button {
   position: absolute;
 }
 
+#success-message {
+  display: none;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #ff4d6d;
+  font-weight: bold;
+}
+
 #gif-container {
   display: none;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -61,33 +73,37 @@ button {
 <body>
 
 <div class="card">
-  <h2>Hey Darshan 💖<br>Will you be my Valentine?</h2>
+  <h2 id="question">Hey Darshan 💖<br>Will you be my Valentine?</h2>
 
   <button id="yes-btn">Yes 💘</button>
   <button id="no-btn">No 😅</button>
 
+  <div id="success-message">
+    Yayyy Darshan said YES!!! 💖🥰
+  </div>
+
   <div id="gif-container">
     <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnBmYnNqcWU5ejUycTR2a251NWxicThoOXp6MnJjdXg0dHJ6dW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/igB2Th9e4nW6s/giphy.gif"
-         width="320">
+         width="300">
   </div>
 </div>
 
 <script>
 const noBtn = document.getElementById("no-btn");
 const yesBtn = document.getElementById("yes-btn");
+const question = document.getElementById("question");
+const successMessage = document.getElementById("success-message");
 const gifContainer = document.getElementById("gif-container");
 const card = document.querySelector(".card");
 
-// Place No button initially
+// Position "No" button initially
 noBtn.style.top = yesBtn.offsetTop + "px";
-noBtn.style.left = yesBtn.offsetLeft + 120 + "px";
+noBtn.style.left = (yesBtn.offsetLeft + 120) + "px";
 
 // Move No button randomly inside card
 noBtn.addEventListener("mouseenter", () => {
-  const cardRect = card.getBoundingClientRect();
-
-  const maxX = cardRect.width - noBtn.offsetWidth;
-  const maxY = cardRect.height - noBtn.offsetHeight;
+  const maxX = card.clientWidth - noBtn.offsetWidth;
+  const maxY = card.clientHeight - noBtn.offsetHeight;
 
   const randomX = Math.random() * maxX;
   const randomY = Math.random() * maxY;
@@ -96,10 +112,12 @@ noBtn.addEventListener("mouseenter", () => {
   noBtn.style.top = randomY + "px";
 });
 
-// Yes button click
+// When Yes is clicked
 yesBtn.addEventListener("click", () => {
+  question.style.display = "none";
   yesBtn.style.display = "none";
   noBtn.style.display = "none";
+  successMessage.style.display = "block";
   gifContainer.style.display = "block";
 });
 </script>
