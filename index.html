@@ -2,72 +2,180 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Valentine Surprise</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<title>Valentine Question</title>
 
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffe6f0, #fff5f8);
+  overflow: hidden;
+}
 
-  body {
-    background-image: url('gitstick.png'); /* sticker background */
-    background-repeat: repeat;
-    background-size: 80px 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.card {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(255, 105, 135, 0.2);
+  position: relative;
+  width: 420px;
+  transition: 0.5s;
+}
 
-  .card {
-    background-color: white;
-    padding: 60px 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    text-align: center;
-    max-width: 500px;
-    z-index: 10;
-  }
+h2 {
+  color: #d6336c;
+}
 
-  h2 {
-    font-family: 'Pacifico', cursive;
-    font-size: 36px;
-    color: #ff4d6d;
-    margin-bottom: 20px;
-  }
+button {
+  padding: 12px 25px;
+  margin: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-  p {
-    font-size: 18px;
-    margin-bottom: 25px;
-  }
+#yes-btn, #accept-btn, #next-btn {
+  background-color: #ff4d6d;
+  color: white;
+}
 
-  #heart {
-    font-size: 100px;
-    text-decoration: none;
-    cursor: pointer;
-    animation: pulse 1s infinite;
-    display: inline-block;
-  }
+#yes-btn:hover, #accept-btn:hover, #next-btn:hover {
+  background-color: #e0315b;
+}
 
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-  }
+#no-btn, #reject-btn {
+  background-color: #adb5bd;
+  color: white;
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+.final-news {
+  text-align: left;
+  font-size: 14px;
+}
+
+.phase {
+  margin-top: 12px;
+}
 </style>
 </head>
+
 <body>
 
-  <div class="card">
-    <h2>Hey Cutie 💖<br>Will you be my Valentine?</h2>
-    <p>Click the heart to see the surprise 💌</p>
-    <a href="valentine.html" id="heart">❤️</a>
+<div class="card">
+
+  <!-- FIRST SCREEN -->
+  <div id="first-screen">
+    <h2>Hey Darshan 💖<br>Will you be my Valentine?</h2>
+    <button id="yes-btn">Yes 💘</button>
+    <button id="no-btn">No 😅</button>
   </div>
+
+  <!-- THANK YOU SCREEN -->
+  <div id="thankyou-screen" class="hidden">
+    <h2>Yayyy you said YES!!! 🥰💖</h2>
+    <img src="https://media0.giphy.com/media/igB2Th9e4nW6s/giphy.gif" width="250">
+    <br>
+    <button id="next-btn">Now it's my turn to accept you 😏</button>
+  </div>
+
+  <!-- QUESTION SCREEN -->
+  <div id="question-screen" class="hidden">
+    <h3>Application Review Process 😌</h3>
+
+    <p>Before I officially accept you...</p>
+
+    <p>✔ Do you promise to share your fries without pretending you're full?</p>
+    <p>✔ Will you reply fast instead of “seen 2 hours ago”?</p>
+    <p>✔ Will you hype me up like I'm the main character?</p>
+    <p>✔ Are you ready for random mood swings and still stay?</p>
+
+    <p><b>Final Question... Should I accept you? 😏</b></p>
+
+    <button id="accept-btn">ACCEPT 💖</button>
+    <button id="reject-btn">Reject 😅</button>
+  </div>
+
+  <!-- FINAL SCREEN -->
+  <div id="final-screen" class="hidden final-news">
+    <h2 style="text-align:center;color:#ff4d6d;">Breaking News 🚨</h2>
+    <h3 style="text-align:center;">Darshan Successfully Passed The Test 😌</h3>
+
+    <p>After careful observation and multiple vibe checks...</p>
+
+    <div class="phase"><b>🍟 Phase 1: Snack Loyalty</b><br>You agreed to share food. Impressive.</div>
+
+    <div class="phase"><b>📱 Phase 2: Reply Speed</b><br>No dry replies allowed. You understood.</div>
+
+    <div class="phase"><b>😂 Phase 3: Humor Check</b><br>Your jokes are acceptable (for now).</div>
+
+    <div class="phase"><b>💖 Final Verdict:</b><br>
+    Congratulations. You are officially my Valentine.  
+    Terms & conditions apply forever 😌</div>
+  </div>
+
+</div>
+
+<script>
+const noBtn = document.getElementById("no-btn");
+const yesBtn = document.getElementById("yes-btn");
+const rejectBtn = document.getElementById("reject-btn");
+
+const firstScreen = document.getElementById("first-screen");
+const thankyouScreen = document.getElementById("thankyou-screen");
+const questionScreen = document.getElementById("question-screen");
+const finalScreen = document.getElementById("final-screen");
+
+const nextBtn = document.getElementById("next-btn");
+const acceptBtn = document.getElementById("accept-btn");
+
+const card = document.querySelector(".card");
+
+noBtn.style.top = "120px";
+noBtn.style.left = "220px";
+
+noBtn.addEventListener("mouseenter", () => {
+  const maxX = card.clientWidth - noBtn.offsetWidth;
+  const maxY = card.clientHeight - noBtn.offsetHeight;
+
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
+});
+
+yesBtn.addEventListener("click", () => {
+  firstScreen.classList.add("hidden");
+  thankyouScreen.classList.remove("hidden");
+});
+
+nextBtn.addEventListener("click", () => {
+  thankyouScreen.classList.add("hidden");
+  questionScreen.classList.remove("hidden");
+});
+
+rejectBtn.addEventListener("mouseenter", () => {
+  const maxX = card.clientWidth - rejectBtn.offsetWidth;
+  const maxY = card.clientHeight - rejectBtn.offsetHeight;
+
+  rejectBtn.style.left = Math.random() * maxX + "px";
+  rejectBtn.style.top = Math.random() * maxY + "px";
+});
+
+acceptBtn.addEventListener("click", () => {
+  questionScreen.classList.add("hidden");
+  finalScreen.classList.remove("hidden");
+});
+</script>
 
 </body>
 </html>
-
