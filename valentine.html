@@ -23,49 +23,50 @@ body {
   text-align: center;
   box-shadow: 0 15px 40px rgba(255, 105, 135, 0.2);
   position: relative;
-  width: 400px;
+  width: 420px;
+  transition: 0.5s;
 }
 
 h2 {
   color: #d6336c;
-  margin-bottom: 30px;
 }
 
 button {
   padding: 12px 25px;
   margin: 15px;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   border-radius: 25px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-#yes-btn {
+#yes-btn, #accept-btn, #next-btn {
   background-color: #ff4d6d;
   color: white;
 }
 
-#yes-btn:hover {
+#yes-btn:hover, #accept-btn:hover, #next-btn:hover {
   background-color: #e0315b;
 }
 
-#no-btn {
+#no-btn, #reject-btn {
   background-color: #adb5bd;
   color: white;
   position: absolute;
 }
 
-#success-message {
+.hidden {
   display: none;
-  margin-top: 20px;
-  font-size: 20px;
-  color: #ff4d6d;
-  font-weight: bold;
 }
 
-#gif-container {
-  display: none;
-  margin-top: 20px;
+.final-news {
+  text-align: left;
+  font-size: 14px;
+}
+
+.phase {
+  margin-top: 12px;
 }
 </style>
 </head>
@@ -73,52 +74,106 @@ button {
 <body>
 
 <div class="card">
-  <h2 id="question">Hey Darshan 💖<br>Will you be my Valentine?</h2>
 
-  <button id="yes-btn">Yes 💘</button>
-  <button id="no-btn">No 😅</button>
-
-  <div id="success-message">
-    Yayyy Darshan said YES!!! 💖🥰
+  <!-- FIRST SCREEN -->
+  <div id="first-screen">
+    <h2>Hey Darshan 💖<br>Will you be my Valentine?</h2>
+    <button id="yes-btn">Yes 💘</button>
+    <button id="no-btn">No 😅</button>
   </div>
 
-  <div id="gif-container">
-    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnBmYnNqcWU5ejUycTR2a251NWxicThoOXp6MnJjdXg0dHJ6dW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/igB2Th9e4nW6s/giphy.gif"
-         width="300">
+  <!-- THANK YOU SCREEN -->
+  <div id="thankyou-screen" class="hidden">
+    <h2>Yayyy you said YES!!! 🥰💖</h2>
+    <img src="https://media0.giphy.com/media/igB2Th9e4nW6s/giphy.gif" width="250">
+    <br>
+    <button id="next-btn">Now it's my turn to accept you 😏</button>
   </div>
+
+  <!-- QUESTION SCREEN -->
+  <div id="question-screen" class="hidden">
+    <h3>Application Review Process 😌</h3>
+
+    <p>Before I officially accept you...</p>
+
+    <p>✔ Do you promise to share your fries without pretending you're full?</p>
+    <p>✔ Will you reply fast instead of “seen 2 hours ago”?</p>
+    <p>✔ Will you hype me up like I'm the main character?</p>
+    <p>✔ Are you ready for random mood swings and still stay?</p>
+
+    <p><b>Final Question... Should I accept you? 😏</b></p>
+
+    <button id="accept-btn">ACCEPT 💖</button>
+    <button id="reject-btn">Reject 😅</button>
+  </div>
+
+  <!-- FINAL SCREEN -->
+  <div id="final-screen" class="hidden final-news">
+    <h2 style="text-align:center;color:#ff4d6d;">Breaking News 🚨</h2>
+    <h3 style="text-align:center;">Darshan Successfully Passed The Test 😌</h3>
+
+    <p>After careful observation and multiple vibe checks...</p>
+
+    <div class="phase"><b>🍟 Phase 1: Snack Loyalty</b><br>You agreed to share food. Impressive.</div>
+
+    <div class="phase"><b>📱 Phase 2: Reply Speed</b><br>No dry replies allowed. You understood.</div>
+
+    <div class="phase"><b>😂 Phase 3: Humor Check</b><br>Your jokes are acceptable (for now).</div>
+
+    <div class="phase"><b>💖 Final Verdict:</b><br>
+    Congratulations. You are officially my Valentine.  
+    Terms & conditions apply forever 😌</div>
+  </div>
+
 </div>
 
 <script>
 const noBtn = document.getElementById("no-btn");
 const yesBtn = document.getElementById("yes-btn");
-const question = document.getElementById("question");
-const successMessage = document.getElementById("success-message");
-const gifContainer = document.getElementById("gif-container");
+const rejectBtn = document.getElementById("reject-btn");
+
+const firstScreen = document.getElementById("first-screen");
+const thankyouScreen = document.getElementById("thankyou-screen");
+const questionScreen = document.getElementById("question-screen");
+const finalScreen = document.getElementById("final-screen");
+
+const nextBtn = document.getElementById("next-btn");
+const acceptBtn = document.getElementById("accept-btn");
+
 const card = document.querySelector(".card");
 
-// Position "No" button initially
-noBtn.style.top = yesBtn.offsetTop + "px";
-noBtn.style.left = (yesBtn.offsetLeft + 120) + "px";
+noBtn.style.top = "120px";
+noBtn.style.left = "220px";
 
-// Move No button randomly inside card
 noBtn.addEventListener("mouseenter", () => {
   const maxX = card.clientWidth - noBtn.offsetWidth;
   const maxY = card.clientHeight - noBtn.offsetHeight;
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
-
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
 });
 
-// When Yes is clicked
 yesBtn.addEventListener("click", () => {
-  question.style.display = "none";
-  yesBtn.style.display = "none";
-  noBtn.style.display = "none";
-  successMessage.style.display = "block";
-  gifContainer.style.display = "block";
+  firstScreen.classList.add("hidden");
+  thankyouScreen.classList.remove("hidden");
+});
+
+nextBtn.addEventListener("click", () => {
+  thankyouScreen.classList.add("hidden");
+  questionScreen.classList.remove("hidden");
+});
+
+rejectBtn.addEventListener("mouseenter", () => {
+  const maxX = card.clientWidth - rejectBtn.offsetWidth;
+  const maxY = card.clientHeight - rejectBtn.offsetHeight;
+
+  rejectBtn.style.left = Math.random() * maxX + "px";
+  rejectBtn.style.top = Math.random() * maxY + "px";
+});
+
+acceptBtn.addEventListener("click", () => {
+  questionScreen.classList.add("hidden");
+  finalScreen.classList.remove("hidden");
 });
 </script>
 
